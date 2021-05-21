@@ -9,10 +9,10 @@ module.exports = {
       const { cep } = req.body
 
       const findCep = await controllerCep.verifyCep(cep)
-      if (findCep !== false) return findCep
+      if (findCep !== false) return res.send(findCep)
 
       const newCep = await controllerCep.getCep(cep)
-      return newCep
+      return res.send(newCep)
     } catch (err) {
       console.log(err)
       return res.status(400).send({ error: 'Erro no registro.' })

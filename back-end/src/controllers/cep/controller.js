@@ -9,7 +9,6 @@ module.exports = {
   async verifyCep (cep) {
     try {
       const findCep = await Cep.findOne({ cep: cep.replace(/(\d{5})(\d)/, '$1-$2') })
-
       if (!findCep) return false
 
       return findCep
@@ -36,7 +35,7 @@ module.exports = {
   validatorCep (cep) {
     try {
       if (!cep) return { error: 'O cep é obrigatório!' }
-      if (cep.length !== 8) return { error: 'O cep informado deve conter 8 digitos!' }
+      if (cep.length !== 8) return { error: 'O cep informado deve conter 8 digitos sem caracteres!' }
 
       return true
     } catch (err) {

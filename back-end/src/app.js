@@ -1,10 +1,12 @@
 const express = require('express')
 require('dotenv/config')
+const cors = require('cors')
 
 class AppController {
   constructor () {
     this.express = express()
 
+    this.express.use(cors())
     this.middlewares()
     this.routes()
   }
